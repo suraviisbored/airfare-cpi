@@ -1,0 +1,4 @@
+fast-flights
+pandas
+requests
+typing_extensions

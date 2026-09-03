@@ -1,0 +1,9 @@
+domain,status_code,snapshot_file
+google.com,200,google.com_robots.txt
+makemytrip.com,FAILED,None
+ixigo.com,200,ixigo.com_robots.txt
+cleartrip.com,200,cleartrip.com_robots.txt
+easemytrip.com,200,easemytrip.com_robots.txt
+goindigo.in,FAILED,None
+airindia.com,FAILED,None
+spicejet.com,200,spicejet.com_robots.txt
