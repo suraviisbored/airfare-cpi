@@ -19,7 +19,7 @@ ROUTES = [
 # 2. Advance booking windows
 WINDOWS = [1, 7, 15, 30, 45]
 
-DATA_DIR = "/Users/scrape/data/raw"
+DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "raw")
 os.makedirs(DATA_DIR, exist_ok=True)
 
 def run_collector():

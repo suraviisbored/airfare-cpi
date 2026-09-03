@@ -2,12 +2,9 @@ name: Scheduled Airfare Collector
 
 on:
   schedule:
-    # 06:00 and 18:00 UTC (11:30 AM and 11:30 PM IST)
     - cron: '0 6,18 * * *'
-  # workflow_dispatch lets you manually click "Run workflow" anytime from the GitHub website
   workflow_dispatch:
 
-# Grant the Action write permissions so it can commit and push data back to your repo
 permissions:
   contents: write
 
@@ -23,21 +20,22 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
 
       - name: 3. Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 4. Run the production collector
+      - name: 4. Ensure data directory exists
+        run: mkdir -p data/raw
+
+      - name: 5. Run the production collector
         run: |
           python collection/collector.py
 
-      - name: 5. Commit and push newly collected data
+      - name: 6. Commit and push newly collected data
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add data/raw/
-          # Commit only if there are new files; otherwise exit cleanly without error
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Automated collection batch [skip ci]" && git push)
+          git diff --staged --quiet || (git commit -m "Automated collection batch [skip ci]" && git push)
