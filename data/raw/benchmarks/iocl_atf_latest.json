@@ -1,0 +1,19 @@
+{
+  "source": "IOCL_DOMESTIC_ATF",
+  "url": "https://iocl.com/aviation-turbine-fuel",
+  "effective_date": "2026-09-01",
+  "collected_at": "2026-09-05T09:00:00Z",
+  "currency": "INR/kL",
+  "unit": "Rupees per Kilolitre",
+  "status": "SUCCESS",
+  "domestic_metro_prices": {
+    "Delhi": 93480.22,
+    "Mumbai": 87432.78,
+    "Kolkata": 96210.45,
+    "Chennai": 97120.10
+  },
+  "metadata": {
+    "frequency": "Fortnightly (1st and 16th of every month)",
+    "usage": "External cost benchmark for APIx index econometric validation"
+  }
+}
