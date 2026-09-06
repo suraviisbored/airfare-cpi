@@ -1,0 +1,27 @@
+{
+  "basket_version": "v1.2",
+  "core_routes": [
+    {"route_id": "R01", "origin": "DEL", "destination": "BOM", "type": "core"},
+    {"route_id": "R02", "origin": "DEL", "destination": "BLR", "type": "core"},
+    {"route_id": "R03", "origin": "BOM", "destination": "BLR", "type": "core"},
+    {"route_id": "R04", "origin": "DEL", "destination": "CCU", "type": "core"},
+    {"route_id": "R05", "origin": "DEL", "destination": "HYD", "type": "core"},
+    {"route_id": "R06", "origin": "MAA", "destination": "DEL", "type": "core"},
+    {"route_id": "R07", "origin": "DEL", "destination": "GAU", "type": "core"},
+    {"route_id": "R08", "origin": "BOM", "destination": "GOI", "type": "core"}
+  ],
+  "supplementary_routes": [
+    {"route_id": "R09", "origin": "DEL", "destination": "PNQ", "type": "supplementary"},
+    {"route_id": "R10", "origin": "BOM", "destination": "HYD", "type": "supplementary"},
+    {"route_id": "R11", "origin": "BLR", "destination": "MAA", "type": "supplementary"},
+    {"route_id": "R12", "origin": "BOM", "destination": "CCU", "type": "supplementary"}
+  ],
+  "advance_windows": [
+    {"label": "T+1", "days": 1},
+    {"label": "T+3", "days": 3},
+    {"label": "T+7", "days": 7},
+    {"label": "T+14", "days": 14},
+    {"label": "T+30", "days": 30}
+  ],
+  "slots": ["08:00", "14:00", "20:00"]
+}

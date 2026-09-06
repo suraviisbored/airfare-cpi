@@ -1,0 +1,50 @@
+name: Scheduled APIx 12-Route Flight Ingestion
+
+on:
+  schedule:
+    # 08:00 AM IST (02:30 UTC)
+    - cron: '30 2 * * *'
+    # 02:00 PM IST (08:30 UTC)
+    - cron: '30 8 * * *'
+    # 08:00 PM IST (14:30 UTC)
+    - cron: '30 14 * * *'
+  workflow_dispatch:
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install beautifulsoup4 requests
+
+      - name: Execute 12-Route Collector
+        run: |
+          python collection/collector_v2.py all
+
+      - name: Generate Audit Summary Table
+        run: |
+          python collection/status_v2.py
+
+      - name: Commit and Persist Raw Observations
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/raw/
+          if git diff --staged --quiet; then
+            echo "No new raw data captured."
+          else
+            git commit -m "Automated ingestion: 12-route IST run [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          fi
